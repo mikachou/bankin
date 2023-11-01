@@ -7,6 +7,13 @@ import codecs
 from datetime import datetime, date
 import os
 import glob
+import argparse
+
+parser=argparse.ArgumentParser()
+
+parser.add_argument("--after", help="Search mails after date")
+
+args=parser.parse_args()
 
 start = time.time()
 try:
@@ -32,8 +39,13 @@ with imaplib.IMAP4_SSL(host='imap.gmail.com', port=imaplib.IMAP4_SSL_PORT) as im
     print('Response Code : {}'.format(resp_code))
     print('Response      : {}\n'.format(response[0].decode()))
 
+    if args.after is not None:
+        criterion = r'X-GM-RAW "from:\"{}\" subject:\"{}\" after:{}"'.format(config['MAIL_FROM'], config['MAIL_SUBJECT'], args.after)
+    else:
+        criterion = r'X-GM-RAW "from:\"{}\" subject:\"{}\""'.format(config['MAIL_FROM'], config['MAIL_SUBJECT'])
+
     imap_ssl.select()
-    resp_code, mail_ids = imap_ssl.search(None, r'X-GM-RAW "from:\"{}\" subject:\"{}\""'.format(config['MAIL_FROM'], config['MAIL_SUBJECT']))
+    resp_code, mail_ids = imap_ssl.search(None, criterion)
 
     mail_ids = mail_ids[0].decode().split()
     total = len(mail_ids)
