@@ -51,7 +51,7 @@ Installer les paquets
 $ pip install -r requirements.txt
 ```
 
-copier `.env.dist` en `.env` et renseigner les champs EMAIL (avec l'adresse gmail) et PASSWORD (avec le mot de passe de l'application)
+copier `.env.dist` en `.env` et renseigner les champs `EMAIL` (avec l'adresse gmail) et `PASSWORD` (avec le mot de passe de l'application)
 
 ## Utilisation
 
