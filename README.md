@@ -1,7 +1,7 @@
 # Bankin
 
 J'ai conçu ces scripts afin d'agréger les données envoyées par Bankin dans mes mails Gmail et de construire un dataset en CSV.
-Il peut y avoir dans le CSV en résultat de nombreux champs non-renseignés il faudra donc éventuellement imputer la donnée manquante en post-traitement.
+Il peut y avoir dans le CSV en résultat de nombreux champs non-renseignés (parfois des données sont absentes des mails de Bankin), il faudra donc éventuellement imputer la donnée manquante en post-traitement.
 
 ## Pré-requis
 
